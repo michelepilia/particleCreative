@@ -4,9 +4,9 @@ private ArrayList<Note> susNotes;
 public void midiInit() {
 
   MidiBus.list(); // List all our MIDI devices
-  minilogue = new MidiBus(this, 6, 7);// Connect to one of the devices
+  minilogue = new MidiBus(this, 4, 5);// Connect to one of the devices
   minilogueBusName = minilogue.getBusName();
-  guitar = new MidiBus(this, 4, 5);// Connect to one of the devices
+  guitar = new MidiBus(this, 0, 0);// Connect to one of the devices
   guitarBusName = guitar.getBusName();
   tempNotes = new ArrayList<Note>();
   susNotes = new ArrayList<Note>();
@@ -16,7 +16,7 @@ public void midiInit() {
 void noteOn(int channel, int pitch, int velocity) {
 
   println("Note ON");
-
+  drawBool = true;
   Note newNote = new Note(pitch, velocity);
 
   //Assuming there is no sustain pedal
@@ -45,6 +45,7 @@ private boolean isAvaiableVoice() {
 void noteOff(int channel, int pitch, int velocity) {
 
   println("Note OFF");
+  drawBool = false;
 
   for (int i=0; i<tempNotes.size(); i++ ) {
     if (tempNotes.get(i).getPitch() == pitch) {

@@ -1,4 +1,5 @@
  //<>//Integration //<>//
+ 
 void setup() {
 
   size(1200, 600, P3D);
@@ -11,10 +12,14 @@ void setup() {
   adsrInit();
   menuInit();
   poly = true;
+  
+  
+  
 }
 
 void draw() {
 
+  
   if (mode == 0) { //menu
     image(startscreen, 0, 0);
     text("Welcome to Korg Minilogue's Visual MIDI", 600, 70);

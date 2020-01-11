@@ -89,7 +89,7 @@ void loadMode(){
 void savePreset(){
   String name = finalMsg;
   Date actualDate = Calendar.getInstance().getTime();
-  Preset actualPreset = new Preset(name, actualDate, sustainPedal, modulation, modulationRate, cutOffFilter, times, ampSus, EGAmpSus, times[0], times[1], times[3], poly, EGInt);
+  Preset actualPreset = new Preset(name, actualDate, sustainPedal, modulation, modulationRate, cutOffFilter, times, ampSus, EGAmpSus, times[0], times[1], times[3], poly, EGInt, hiPassDly, timeDly, feedbackDly, isActiveDly);
   
   loadPresetsFromFile(); //salvataggio from file to var senza grafica
   addPreset(actualPreset); //Aggiunge preset controllando se overwrite
@@ -150,6 +150,7 @@ void activatePreset(int index){
   timeDly = activePreset.getTimeDly();
   feedbackDly = activePreset.getFeedbackDly();
   isActiveDly = activePreset.getIsActiveDly();
+  println(activePreset.toString());
   
   return;
 }
